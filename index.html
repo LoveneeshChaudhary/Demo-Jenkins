@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora — Beautiful Landing Page</title>
+  <meta name="description" content="Aurora — a clean, modern landing page template with CTA, features and responsive layout." />
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent:#7c5cff;
+      --accent-2:#38e0c3;
+      --muted:#9aa7bf;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#071026 0%, #071a2a 50%);
+      color: #e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* Navbar */
+    .nav{
+      position:fixed;left:0;right:0;top:16px;display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border-radius:12px;margin:0 auto;max-width:1100px;background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));backdrop-filter: blur(6px);box-shadow:0 6px 24px rgba(2,6,23,0.6);
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#052024}
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .nav-links{display:flex;gap:18px;align-items:center}
+    .nav-links a{color:var(--muted);text-decoration:none;font-size:14px;padding:8px 10px;border-radius:8px}
+    .nav-links a:hover{color:#eaf3ff;background:rgba(255,255,255,0.02)}
+    .cta-btn{padding:9px 14px;border-radius:9px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#041018;text-decoration:none;font-weight:600}
+
+    /* Mobile */
+    .menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:20px}
+    @media (max-width:800px){
+      .nav{padding:10px 16px}
+      .nav-links{display:none}
+      .menu-toggle{display:block}
+    }
+
+    /* Hero */
+    .container{max-width:1100px;margin:120px auto 40px;padding:0 28px}
+    .hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    .badge{display:inline-flex;padding:6px 10px;background:rgba(255,255,255,0.03);border-radius:999px;color:var(--accent-2);font-weight:600;font-size:13px}
+    .title{font-size:40px;line-height:1.05;margin:18px 0 12px}
+    .lead{color:var(--muted);margin-bottom:22px}
+    .hero p.lead strong{color:#dbeefd}
+
+    .features{display:flex;gap:12px;margin-top:18px}
+    .feature{background:var(--glass);padding:12px;border-radius:10px;min-width:0;flex:1}
+    .feature h4{margin:0 0 6px}
+    .feature p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Signup card */
+    .card{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:14px;box-shadow:0 8px 24px rgba(6,10,20,0.6);}
+    .card h3{margin:0 0 8px}
+    .card p{margin:0 0 14px;color:var(--muted)}
+    .input-row{display:flex;gap:8px}
+    .input-row input{flex:1;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit}
+    .input-row button{padding:12px 16px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));font-weight:700;color:#041018}
+
+    /* SVG art */
+    .art{position:relative}
+    .wave{opacity:0.12;filter:blur(18px);transform:translateY(6px)}
+
+    /* Sections */
+    .section{margin-top:48px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card-alt{background:rgba(255,255,255,0.02);padding:18px;border-radius:12px}
+    .card-alt h4{margin:0 0 8px}
+    .muted{color:var(--muted)}
+
+    @media (max-width:980px){.hero{grid-template-columns:1fr;}.grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){.grid{grid-template-columns:1fr}.container{margin-top:80px}}
+
+    /* Footer */
+    footer{margin-top:64px;padding:24px 28px;border-top:1px solid rgba(255,255,255,0.02);color:var(--muted);text-align:center}
+
+    /* small micro interactions */
+    .logo, .card, .card-alt, .feature{transition:transform .28s ease, box-shadow .28s ease}
+    .card:hover, .card-alt:hover, .feature:hover{transform:translateY(-6px)}
+
+    /* subtle entrance */
+    .reveal{opacity:0;transform:translateY(12px);animation:reveal .7s ease forwards}
+    .reveal.delay-1{animation-delay:.08s}
+    .reveal.delay-2{animation-delay:.16s}
+    @keyframes reveal{to{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo">A</div>
+      <div>
+        <h1 style="font-size:15px;margin-bottom:2px">Aurora</h1>
+        <p style="font-size:12px;margin:0">Design • Product • Delight</p>
+      </div>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Testimonials</a>
+      <a class="cta-btn" href="#signup">Get Started</a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="badge reveal delay-1">New • Summer 2025</div>
+        <h2 class="title reveal delay-2">Create beautiful experiences, <br>faster than ever.</h2>
+        <p class="lead reveal">Aurora helps teams ship <strong>polished</strong> product experiences with a tiny learning curve — components, layouts and motion, tuned to delight.</p>
+
+        <div class="features reveal">
+          <div class="feature">
+            <h4>Lightning-fast</h4>
+            <p class="muted">Reusable components and design tokens to speed up development.</p>
+          </div>
+          <div class="feature">
+            <h4>Accessible</h4>
+            <p class="muted">Built with accessible defaults — keyboard & screen reader friendly.</p>
+          </div>
+          <div class="feature">
+            <h4>Polished motion</h4>
+            <p class="muted">Micro-interactions that feel natural and unobtrusive.</p>
+          </div>
+        </div>
+
+        <div class="section reveal" id="how">
+          <h3 style="margin:0 0 12px">How it works</h3>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <div class="card-alt" style="flex:1;min-width:200px">
+              <h4>1. Install</h4>
+              <p class="muted">Add Aurora to your project and import what you need.</p>
+            </div>
+            <div class="card-alt" style="flex:1;min-width:200px">
+              <h4>2. Compose</h4>
+              <p class="muted">Drop in components and customize tokens to match your brand.</p>
+            </div>
+            <div class="card-alt" style="flex:1;min-width:200px">
+              <h4>3. Ship</h4>
+              <p class="muted">Ship faster with consistent design and accessible defaults.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <aside class="card reveal" id="signup">
+        <h3>Start your free trial</h3>
+        <p>Join teams building delightful UIs. No credit card required.</p>
+        <form id="signupForm">
+          <div class="input-row">
+            <input type="email" id="email" placeholder="you@company.com" required />
+            <button type="submit">Try it free</button>
+          </div>
+        </form>
+        <p style="font-size:12px;margin-top:10px;color:var(--muted)">14-day trial • Cancel anytime</p>
+
+        <div class="art" aria-hidden="true" style="margin-top:18px">
+          <svg class="wave" width="100%" height="80" viewBox="0 0 600 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#7c5cff" />
+                <stop offset="1" stop-color="#38e0c3" />
+              </linearGradient>
+            </defs>
+            <path d="M0 40 C150 80 350 0 600 40 L600 120 L0 120 Z" fill="url(#g1)" opacity="0.9"></path>
+          </svg>
+        </div>
+      </aside>
+    </section>
+
+    <section class="section" id="features">
+      <h3 class="reveal">Features</h3>
+      <div class="grid reveal delay-1" style="margin-top:12px">
+        <div class="card-alt">
+          <h4>Design tokens</h4>
+          <p class="muted">Centralized tokens for color, spacing and typography.</p>
+        </div>
+        <div class="card-alt">
+          <h4>Components</h4>
+          <p class="muted">Buttons, inputs, cards and more — all responsive and themeable.</p>
+        </div>
+        <div class="card-alt">
+          <h4>Guides</h4>
+          <p class="muted">Accessibility and motion guidelines so your product feels cohesive.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <h3 class="reveal">What teams say</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px">
+        <div class="card-alt reveal delay-1">
+          <strong>"Aurora cut our design time in half."</strong>
+          <p class="muted">— Priya, Product Designer</p>
+        </div>
+        <div class="card-alt reveal delay-1">
+          <strong>"Built-in accessibility saved us weeks."</strong>
+          <p class="muted">— Sameer, Frontend Engineer</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div style="max-width:900px;margin:0 auto">© 2025 Aurora • Crafted with care • <span class="muted">Privacy</span> • <span class="muted">Terms</span></div>
+    </footer>
+  </main>
+
+  <script>
+    // Mobile nav toggle
+    const menuBtn = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn && menuBtn.addEventListener('click', ()=>{
+      if(navLinks.style.display === 'flex') navLinks.style.display = '';
+      else navLinks.style.display = 'flex';
+      navLinks.style.flexDirection = 'column';
+      navLinks.style.position = 'absolute';
+      navLinks.style.right = '16px';
+      navLinks.style.top = '64px';
+      navLinks.style.background = 'rgba(7,12,20,0.85)';
+      navLinks.style.padding = '12px';
+      navLinks.style.borderRadius = '10px';
+    });
+
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          window.scrollTo({top: target.getBoundingClientRect().top + window.scrollY - 80, behavior:'smooth'});
+          // close mobile nav
+          if(window.innerWidth <= 800) navLinks.style.display = '';
+        }
+      });
+    });
+
+    // Simple form validation + faux submit
+    const form = document.getElementById('signupForm');
+    form && form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      if(!email || !email.includes('@')){
+        alert('Please enter a valid email address');
+        return;
+      }
+      // show success micro-interaction
+      const btn = form.querySelector('button');
+      const orig = btn.textContent;
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+      setTimeout(()=>{
+        btn.textContent = 'Done ✓';
+        btn.style.background = 'linear-gradient(90deg,#34d399,#60a5fa)';
+        setTimeout(()=>{
+          btn.textContent = orig; btn.disabled = false; btn.style.background = '';
+          alert('Thanks! Check your inbox for a welcome email.');
+          form.reset();
+        },1200);
+      },900);
+    });
+
+    // Small reveal on load
+    window.addEventListener('load', ()=>{
+      document.querySelectorAll('.reveal').forEach((el,i)=>{
+        el.style.opacity = 0; el.style.transform = 'translateY(12px)';
+        setTimeout(()=>{ el.style.opacity = 1; el.style.transform = 'none'; el.style.transition = 'all .6s cubic-bezier(.2,.9,.2,1)'; }, 80*i);
+      });
+    });
+  </script>
+
+</body>
+</html>
